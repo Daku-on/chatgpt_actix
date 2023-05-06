@@ -5,7 +5,6 @@ use bcrypt::{verify};
 use jsonwebtoken::{encode, decode, Header, EncodingKey, DecodingKey, Validation};
 use dotenv::dotenv;
 use std::env;
-//use chrono::Duration;
 
 #[derive(Deserialize)]
 struct AuthRequest {
