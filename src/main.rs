@@ -5,7 +5,6 @@ use bcrypt::{verify};
 use jsonwebtoken::{encode, decode, Header, EncodingKey, DecodingKey, Validation};
 use dotenv::dotenv;
 use std::env;
-//use chrono::Duration;
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Claims {
@@ -45,7 +44,7 @@ async fn chat_gpt(client: web::Data<Client>, data: web::Json<ChatRequest>) -> im
 
     if token_data.is_ok() {
         let api_key = env::var("OPENAI_API_KEY").expect("OPENAI_API_KEY not set");
-        let response = client.post("https://api.openai.com/v1/engines/davinci-codex/completions")
+        let response = client.post("https:api.openai.com/v1/engines/davinci-codex/completions")
             .header("Authorization", format!("Bearer {}", api_key))
             .json(&serde_json::json!({
                 "prompt": &data.message,
