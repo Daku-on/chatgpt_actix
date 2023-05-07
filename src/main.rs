@@ -58,7 +58,8 @@ async fn chat_gpt(client: web::Data<Client>, data: web::Json<ChatRequest>) -> im
             Err(_) => HttpResponse::InternalServerError().body("Error calling OpenAI API"),
         }
     } else {
-        HttpResponse::Unauthorized().body("Invalid token")
+        eprintln!("Error: {:?}", token_data.err());
+        return HttpResponse::Unauthorized().body("Invalid token");
     }
 }
 
